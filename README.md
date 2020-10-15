@@ -26,3 +26,6 @@ response: `{"jwt": "<token>"}` - jwt token to authenticate requests using `Autho
 
 * `POST /logout` - log the user out.  
 Since the jwt is maintained only client side, there is no real reason the add this endpoint. The client-side should just delete the jwt from the local-storage. 
+
+### Tests:  
+`cd backend && npm run test`
