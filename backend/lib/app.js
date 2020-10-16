@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const auth = require("./auth.middleware");
 const { registerValidator, loginValidator } = require("./validation");
 const createGuard = require("./guard");
@@ -6,6 +7,7 @@ const createGuard = require("./guard");
 module.exports = (db) => {
   const app = express();
   app.use(express.json());
+  app.use(cors());
 
   const guard = createGuard(db);
 
