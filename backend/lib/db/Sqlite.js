@@ -54,7 +54,8 @@ class Sqlite {
       logged_in_at = $logged_in_at, 
       logged_in_ip = $logged_in_ip, 
       logged_in_useragent = $logged_in_useragent, 
-      is_online = $is_online 
+      is_online = $is_online, 
+      login_count = login_count + 1
       WHERE username = $username
       `,
         {
@@ -115,7 +116,8 @@ updated_at TEXT NOT_NULL,
 logged_in_at TEXT,
 logged_in_ip TEXT,
 logged_in_useragent TEXT,
-is_online TEXT NOT NULL CHECK (is_online IN (0,1)) DEFAULT 0
+is_online TEXT NOT NULL CHECK (is_online IN (0,1)) DEFAULT 0,
+login_count INTEGER NOT NULL DEFAULT 0
 );
 `,
         (err) => (err ? rej(err) : res())

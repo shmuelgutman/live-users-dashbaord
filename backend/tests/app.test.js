@@ -87,3 +87,12 @@ test("/api/users", async () => {
   expect(response.body).toHaveProperty("users");
   expect(response.body.users).toHaveLength(3);
 });
+
+test("login count", async () => {
+  await dbHelpers.createUser("u1", "1234");
+  expect(await dbHelpers.getUser("u1")).toHaveProperty("login_count", 0);
+  await request(app).post("/login").send({ username: "u1", password: "1234" }).expect(200);
+  expect(await dbHelpers.getUser("u1")).toHaveProperty("login_count", 1);
+  await request(app).post("/login").send({ username: "u1", password: "1234" }).expect(200);
+  expect(await dbHelpers.getUser("u1")).toHaveProperty("login_count", 2);
+});
