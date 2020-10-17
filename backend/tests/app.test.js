@@ -96,3 +96,12 @@ test("login count", async () => {
   await request(app).post("/login").send({ username: "u1", password: "1234" }).expect(200);
   expect(await dbHelpers.getUser("u1")).toHaveProperty("login_count", 2);
 });
+
+test("register - user already exists", async () => {
+  await dbHelpers.createUser("u1", "1234");
+
+  await request(app)
+    .post("/register")
+    .send({ username: "u1", password: "secret" })
+    .expect(422, "User already exists");
+});

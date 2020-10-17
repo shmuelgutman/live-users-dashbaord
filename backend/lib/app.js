@@ -19,7 +19,7 @@ module.exports = (db) => {
     next();
   });
 
-  app.post("/register", registerValidator(), (req, res, next) => {
+  app.post("/register", registerValidator(db), (req, res, next) => {
     db.createUser(req.body)
       .then((user) => guard.login(user, req.headers))
       .then((jwt) => res.send({ jwt }))
