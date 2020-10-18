@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import './App.css';
 import { getMe } from "./backendApi";
 import FormLogin from "./Views/Form.Login";
 import FormRegister from "./Views/Form.Register"
 import Dashboard from "./Views/Dashboard";
+import './tailwind.output.css';
 
 function App() {
   
@@ -23,7 +23,7 @@ function App() {
     }
   }, [currentUser.id, currentView]);
   return (
-    <div className="App">
+    <div className="App min-h-screen bg-gray-200 py-12 px-4 sm:px-6 lg:px-8">
       {currentView === 'dashboard' && <Dashboard setCurrentView={setCurrentView} currentUser={currentUser}/>}
       {currentView === 'login' && <FormLogin setCurrentView={setCurrentView}/>}
       {currentView === 'register' && <FormRegister setCurrentView={setCurrentView}/>}

@@ -9,9 +9,12 @@
     "axios": "^0.20.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "tailwindcss": "^1.9.4"
   },
   "scripts": {
+    "build:tailwind": "tailwindcss build src/tailwind.css -o src/tailwind.output.css",
+    "prestart": "npm run build:tailwind",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
