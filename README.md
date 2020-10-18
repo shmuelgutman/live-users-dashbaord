@@ -4,7 +4,7 @@ A demo project that illustrates a full-stack nodejs and react application.
 
 The backend and frontend are completely separated and should be run in different processes.
 
-### To run the backend:
+### First run the backend:
 `cd backend && npm i && npm start`  
 ### Environment variables:  
 
@@ -33,3 +33,20 @@ Since the jwt is maintained only client side, there is no real reason the add th
 
 ### Tests:  
 `cd backend && npm run test`
+
+
+## Frontend
+
+Then run the frontend in a different terminal window:
+
+`cd frontend && yarn && yarn start`
+
+Run Test:
+  
+`yarn test`
+
+The frontend simply have 3 views: login, register and dashboard.  
+Go to the register view and sign-up with some username and password.  
+View the user in the dashboard.  
+Open the app in a different tab and register with another user.  
+See the online users table live-updated in first tab.  
