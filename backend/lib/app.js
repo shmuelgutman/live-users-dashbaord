@@ -53,6 +53,7 @@ module.exports = (db) => {
 
   /**
    * Online user is considered to be a user who logged in to the app, either by /login or by /register
+   * and not yet clicked on the logout button.
    */
   app.get("/api/users", auth(guard), (req, res, next) => {
     db.getOnlineUsers()

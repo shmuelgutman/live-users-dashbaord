@@ -10,7 +10,7 @@ module.exports = {
   },
   loginValidator: () => (req, res, next) => {
     if (!req.body.username || !req.body.password) {
-      return res.status(422).send("Invalid username or password");
+      return res.status(422).send("Missing username and/or password");
     }
     next();
   },
