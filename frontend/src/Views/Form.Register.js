@@ -9,11 +9,13 @@ export default function FormRegister(props){
   function handleSubmit(e){
     e.preventDefault();
     register(username, password)
-      .then(() => {
+      .then((res) => {
+        if(typeof res === 'string'){
+          return setRegistrationError(res);
+        }
         props.setCurrentView('dashboard');
       })
       .catch((err) => {
-        console.log(err);
         setRegistrationError(err.toString());
       })
   }
@@ -23,7 +25,7 @@ export default function FormRegister(props){
       <form onSubmit={handleSubmit}>
         {registrationError &&
         <div className="mt-6 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-          <span className="block sm:inline">{{registrationError}}</span>
+          <span className="block sm:inline">{registrationError}</span>
         </div>}
         <p className="mt-6">
           <label htmlFor="username">Username</label><br/>

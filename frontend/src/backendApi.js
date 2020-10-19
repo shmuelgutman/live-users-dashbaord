@@ -33,7 +33,8 @@ export const register = (username, password) => {
         setAuthorizationHeader(data.jwt);
       }
       return data;
-    });
+    })
+    .catch((err) => err.response ? err.response.data : Promise.reject(err) );
 };
 
 export const logout = () => {
